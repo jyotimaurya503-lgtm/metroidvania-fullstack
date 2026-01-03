@@ -1,0 +1,289 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Retro Metroidvania Design System - All colors MUST be HSL */
+
+@layer base {
+  :root {
+    /* Base colors - Dark space theme */
+    --background: 240 8% 8%;
+    --foreground: 180 100% 85%;
+
+    /* Card colors - CRT screen aesthetics */
+    --card: 240 12% 12%;
+    --card-foreground: 180 90% 90%;
+
+    /* Popover colors */
+    --popover: 240 15% 10%;
+    --popover-foreground: 180 85% 85%;
+
+    /* Primary - Electric blue glow */
+    --primary: 200 100% 50%;
+    --primary-foreground: 240 10% 5%;
+    --primary-glow: 200 100% 70%;
+
+    /* Secondary - Neon purple */
+    --secondary: 280 100% 60%;
+    --secondary-foreground: 240 5% 95%;
+    --secondary-glow: 280 100% 80%;
+
+    /* Muted - Dark grays */
+    --muted: 240 5% 20%;
+    --muted-foreground: 200 20% 65%;
+
+    /* Accent - Toxic green */
+    --accent: 120 100% 40%;
+    --accent-foreground: 240 10% 5%;
+    --accent-glow: 120 100% 60%;
+
+    /* Destructive - Warning red */
+    --destructive: 0 85% 60%;
+    --destructive-foreground: 240 5% 95%;
+
+    /* UI elements */
+    --border: 240 20% 25%;
+    --input: 240 15% 15%;
+    --ring: 200 100% 50%;
+
+    /* CRT specific colors */
+    --crt-green: 120 100% 50%;
+    --crt-amber: 45 100% 60%;
+    --scanline: 240 5% 5%;
+    
+    /* Gradients */
+    --gradient-glow: linear-gradient(135deg, hsl(var(--primary)) 0%, hsl(var(--primary-glow)) 50%, hsl(var(--secondary)) 100%);
+    --gradient-crt: linear-gradient(180deg, hsl(var(--muted)) 0%, hsl(var(--background)) 100%);
+    --gradient-factory: linear-gradient(135deg, hsl(240 15% 8%) 0%, hsl(240 20% 12%) 50%, hsl(240 10% 6%) 100%);
+    
+    /* Shadows and glows */
+    --shadow-glow: 0 0 20px hsl(var(--primary) / 0.5), 0 0 40px hsl(var(--primary) / 0.3);
+    --shadow-crt: inset 0 0 20px hsl(var(--scanline) / 0.8), 0 4px 8px hsl(240 10% 0% / 0.6);
+    --text-glow: 0 0 10px currentColor, 0 0 20px currentColor, 0 0 30px currentColor;
+
+    --radius: 2px;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    /* Enhanced dark mode for retro gaming */
+    --background: 240 15% 6%;
+    --foreground: 180 100% 90%;
+    --card: 240 20% 10%;
+    --card-foreground: 180 95% 95%;
+    --popover: 240 25% 8%;
+    --popover-foreground: 180 90% 90%;
+    --primary: 200 100% 55%;
+    --primary-foreground: 240 15% 5%;
+    --primary-glow: 200 100% 75%;
+    --secondary: 280 100% 65%;
+    --secondary-foreground: 240 10% 95%;
+    --secondary-glow: 280 100% 85%;
+    --muted: 240 10% 18%;
+    --muted-foreground: 200 25% 70%;
+    --accent: 120 100% 45%;
+    --accent-foreground: 240 15% 5%;
+    --accent-glow: 120 100% 65%;
+    --destructive: 0 90% 65%;
+    --destructive-foreground: 240 10% 95%;
+    --border: 240 25% 22%;
+    --input: 240 20% 12%;
+    --ring: 200 100% 55%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-mono;
+  }
+  
+  /* CRT Screen Effects */
+  .crt-screen {
+    background: var(--gradient-crt);
+    box-shadow: var(--shadow-crt);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .crt-screen::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      hsl(var(--scanline) / 0.1) 2px,
+      hsl(var(--scanline) / 0.1) 4px
+    );
+    pointer-events: none;
+    animation: scanlines 0.1s linear infinite;
+  }
+  
+  /* Glow text effect */
+  .glow-text {
+    text-shadow: var(--text-glow);
+    animation: glow-pulse 2s ease-in-out infinite alternate;
+  }
+  
+  /* Flicker animation */
+  .flicker {
+    animation: flicker 3s ease-in-out infinite;
+  }
+  
+  /* Pixel perfect borders */
+  .pixel-border {
+    border-style: solid;
+    border-image: url("data:image/svg+xml,%3csvg width='100' height='100' xmlns='http://www.w3.org/2000/svg'%3e%3cpath d='m4 4h92v92h-92z' fill='none' stroke='%23ffffff' stroke-width='2'/%3e%3c/svg%3e") 2;
+  }
+}
+
+@layer components {
+  /* Retro button styles */
+  .retro-btn {
+    @apply relative px-6 py-3 bg-card border-2 border-primary text-primary font-bold;
+    @apply crt-screen transition-all duration-200;
+    font-family: 'Courier New', monospace;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  
+  .retro-btn:hover {
+    @apply bg-primary text-primary-foreground;
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+  }
+  
+  .retro-btn:active {
+    transform: translateY(0);
+  }
+}
+
+@keyframes scanlines {
+  0% { transform: translateY(0); }
+  100% { transform: translateY(4px); }
+}
+
+@keyframes glow-pulse {
+  from {
+    text-shadow: 
+      0 0 5px currentColor,
+      0 0 10px currentColor,
+      0 0 15px currentColor;
+  }
+  to {
+    text-shadow: 
+      0 0 10px currentColor,
+      0 0 20px currentColor,
+      0 0 30px currentColor,
+      0 0 40px currentColor;
+  }
+}
+
+@keyframes flicker {
+  0%, 100% { opacity: 1; }
+  2% { opacity: 0.8; }
+  4% { opacity: 1; }
+  8% { opacity: 0.9; }
+  10% { opacity: 1; }
+  15% { opacity: 0.7; }
+  16% { opacity: 1; }
+}
+
+/* Bounce animation - Slow customizable bounce */
+@keyframes bounce-slow {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-30px); /* Adjust height of bounce here */
+  }
+}
+
+.animate-bounce-slow {
+  animation: bounce-slow 2s infinite; /* Adjust duration here */
+  animation-timing-function: ease-in-out;
+}
+@layer utilities {
+  .bg-crt {
+    background: var(--gradient-crt);
+    box-shadow: var(--shadow-crt);
+  }
+
+  .text-glow {
+    text-shadow: var(--text-glow);
+  }
+
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .crt-border {
+    border: 2px solid hsl(var(--border));
+    border-radius: var(--radius);
+  }
+
+  .rounded {
+    border-radius: var(--radius);
+  }
+}
+
+/* Style the dropdown container */
+.react-tel-input .country-list {
+  background-color: black !important;
+  color: #c0f7d1 !important; /* light green text */
+  border: none;
+}
+
+/* Style each country item */
+.react-tel-input .country-list .country {
+  color: #c0f7d1 !important;
+}
+
+/* Highlight hovered country */
+.react-tel-input .country-list .country:hover {
+  background-color: #222 !important;
+}
+
+/* Style the selected flag dropdown button */
+.react-tel-input .flag-dropdown {
+  background-color: black !important;
+  border: none !important;
+}
+
+/* Style the search box inside the dropdown */
+.react-tel-input .country-list .search-box {
+  background-color: black !important;
+  color: #c0f7d1 !important;
+  border: 1px solid #444 !important;
+}
