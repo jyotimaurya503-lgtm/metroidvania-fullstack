@@ -1,73 +1,68 @@
-# Welcome to your Lovable project
+# Metroidvania Full-Stack Game
 
-## Project info
+A full-stack Metroidvania-style browser game extended from an open-source base project, enhanced with authentication, backend integration, and persistent gameplay features.
 
-**URL**: https://.dev/projects/f0754c94-a08d-48c3-9489-1fce2af30813
+## 🚀 Project Overview
 
-## How can I edit this code?
+This project is a browser-based Metroidvania game where players can:
+- Sign up and log in
+- Play the game with score tracking
+- View leaderboard and score history
+- Persist progress using a backend database
 
-There are several ways of editing your application.
+The original game logic was taken from an open-source JavaScript Metroidvania project and significantly extended to convert it into a full-stack application.
 
-**Use **
+## 🧩 Key Features
 
-Simply visit the [Lovable Project](https://lovable.dev/projects/f0754c94-a08d-48c3-9489-1fce2af30813) and start prompting.
+- User authentication (Login & Signup)
+- Backend integration using Node.js and Express
+- MongoDB database for users, scores, and leaderboard
+- Score persistence across sessions
+- Leaderboard page to compare player scores
+- Frontend–backend API integration
+- Responsive UI built with React and Tailwind CSS
 
-Changes made via Lovable will be committed automatically to this repo.
+## 🛠️ Tech Stack
 
-**Use your preferred IDE**
-
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
-
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
-
-Follow these steps:
-
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
-
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
-
-# Step 3: Install the necessary dependencies.
-npm i
-
-# Step 4: Start the development server with auto-reloading and an instant preview.
-npm run dev
-```
-
-**Edit a file directly in GitHub**
-
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
-
-**Use GitHub Codespaces**
-
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
-
-## What technologies are used for this project?
-
-This project is built with:
-
-- Vite
-- TypeScript
+### Frontend
 - React
-- shadcn-ui
+- TypeScript
+- Vite
 - Tailwind CSS
+- shadcn/ui
 
-## How can I deploy this project?
+### Backend
+- Node.js
+- Express.js
+- MongoDB
+- REST APIs
 
-Simply open [Lovable](https://lovable.dev/projects/f0754c94-a08d-48c3-9489-1fce2af30813) and click on Share -> Publish.
+### Tools
+- Git & GitHub
+- VS Code
 
-## Can I connect a custom domain to my Lovable project?
+## 📁 Project Structure
 
-Yes, you can!
+- `/src` – Frontend React application
+- `/public` – Game assets and static files
+- `/game-backend` – Backend server and APIs
+- `package.json` – Project configuration
 
-To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+## ⚙️ How to Run Locally
 
-Read more here: [Setting up a custom domain](https://docs.lovable.dev/tips-tricks/custom-domain#step-by-step-guide)
+### Prerequisites
+- Node.js
+- npm
+
+### Steps
+
+git clone https://github.com/jyotimaurya503-lgtm/metroidvania-fullstack.git
+cd metroidvania-fullstack
+npm install
+npm run dev
+
+### For backend
+cd game-backend
+npm install
+npm start
+
